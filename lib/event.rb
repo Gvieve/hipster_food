@@ -11,6 +11,12 @@ class Event
     @food_trucks << food_truck
   end
 
+  def food_truck_names
+    @food_trucks.find_all do |food_truck|
+      food_truck.name
+    end
+  end
+
   def food_trucks_that_sell(item)
     @food_trucks.find_all do |food_truck|
       food_truck.inventory.keys.include?(item)
@@ -30,7 +36,7 @@ class Event
   def total_inventory
     all_items = @food_trucks.map do |food_truck|
       food_truck.items
-    end.uniq
+    end
 
     all_items.each do |item|
       require "pry"; binding.pry
