@@ -1,6 +1,7 @@
 class FoodTruck
   attr_reader :name,
-              :inventory
+              :inventory,
+              :items
 
   def initialize(name)
     @name = name
@@ -23,5 +24,9 @@ class FoodTruck
     @inventory.map do |item, qty|
       (item.price * qty)
     end.sum
+  end
+
+  def items
+    @inventory.keys
   end
 end

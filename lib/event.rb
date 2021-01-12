@@ -17,7 +17,23 @@ class Event
     end
   end
 
-  def potential_revenue
-    require "pry"; binding.pry
+  def sorted_item_list
+    items = []
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item|
+         items << item.first.name
+      end
+    end
+    items.uniq.sort
+  end
+
+  def total_inventory
+    all_items = @food_trucks.map do |food_truck|
+      food_truck.items
+    end.uniq
+
+    all_items.each do |item|
+      require "pry"; binding.pry
+    end
   end
 end
